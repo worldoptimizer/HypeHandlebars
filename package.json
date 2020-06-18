@@ -3,6 +3,7 @@
     "version": "1.6",
     "description": "Wrapper to connects Handlebars to your Hype document (rectangles/DIV's)",
     "author": "Max Ziebell",
+    "main":	"HypeHandlebars.js",
     "license": "MIT",
     "dependencies": {}
 }
