@@ -60,6 +60,13 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 			}
 		}
 
+		/**
+		* hypeDocument.updateHandlebars
+		*	Update all handlebars in the scene
+		*
+		* @param {Object} options - is optional and allows for the usual Handlebar settings, defaults to useful settings for Hype if not set
+		* @param {HTMLElement} elms - is an optional Nodelist to limit the update to
+		*/
 		hypeDocument.updateHandlebars = function(options, elms){
 			var sceneElm = document.getElementById(hypeDocument.currentSceneId());
 			var hbsElms = elms || sceneElm.querySelectorAll(_settings[hypeDocument.documentId()].selector);
