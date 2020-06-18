@@ -15,6 +15,11 @@ copyright (c) 2020 Max Ziebell, (https://maxziebell.de). MIT-license
 
 if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function () {
 	
+  	/**
+     * A module that extends Tumult Hype with the possibility to use Handlebars in your Hype documents
+     * @module Hype Handlebars
+     */
+
 	/* prvate vars */
 	var _templates = {};
 	var _hbs = {};
