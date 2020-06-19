@@ -15,12 +15,11 @@ copyright (c) 2020 Max Ziebell, (https://maxziebell.de). MIT-license
 
 if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function () {
 	
-  	/**
-     * A module that extends Tumult Hype with the possibility to use Handlebars in your Hype documents
-     * @module Hype Handlebars
-     */
+	/**
+	* A module that extends Tumult Hype with the possibility to use Handlebars in your Hype documents
+	* @module Hype Handlebars
+	*/
 
-	/* prvate vars */
 	var _templates = {};
 	var _hbs = {};
 	var _settings = {};
@@ -66,13 +65,13 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 		}
 
 		/**
-		* Update all handlebars in the scene
-		*
- 		*     hypeDocument.updateHandlebars()
-		*
-		* @param {Object} options is optional and allows for the usual Handlebar settings, defaults to useful settings for Hype if not set
-		* @param {HTMLElement} elms is an optional Nodelist to limit the update to a specific set of HTML elements
-		*/
+		 * Update all handlebars in the scene
+		 *
+ 		 *     hypeDocument.updateHandlebars();
+		 *
+		 * @param {Object} options is optional and allows for the usual Handlebar settings, defaults to useful settings for Hype if not set
+		 * @param {Nodelist} elms is an optional nodelist to limit the update to a specific set of HTML elements
+		 */
 		hypeDocument.updateHandlebars = function(options, elms){
 			var sceneElm = document.getElementById(hypeDocument.currentSceneId());
 			var hbsElms = elms || sceneElm.querySelectorAll(_settings[hypeDocument.documentId()].selector);
@@ -81,10 +80,33 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 			});
 		}
 
+		/**
+		 * Convenience wrapper to hypeDocument.updateHandlebars method putting the nodelist argument first to avoid passing a null
+		 *
+		 *     var elms = document.querySelector('.myHandleBars');
+ 		 *     hypeDocument.updateHandlebarsByNodelist(elms);
+		 *
+		 * @param {Nodelist} elms is an optional nodelist to limit the update to a specific set of HTML elements
+		 * @param {Object} options is optional and allows for the usual Handlebar settings, defaults to useful settings for Hype if not set
+		 */
 		hypeDocument.updateHandlebarsByNodelist = function(elms, options){
 			hypeDocument.updateHandlebars(options, elms);
 		}
 
+		/**
+		 * This function is the what is actually being called to make the Handlebar updates and set the option defaults. These include addition helper functions and variable shortcuts. The Handlebars in Hype know about the context they are running in giving you access to hypeDocument and if available symbolInstance. This allow for function calls to the API of the hypeDocument or symbolInstance.
+		 *
+		 *     var elm = hypeDocument.getElementById('myElement');
+ 		 *     hypeDocument.updateHandlebarsByElement(elm, {
+		 *     	disableHypeResolver: false, //true removes the possibility to call Hype function from within Hype Handlebar
+		 *     	disableQueryHelper: false, //true disables the Handlebar helper for scene queries like $('.myElement') and document queries like querySelector('.test')
+		 *     	disableHypeVariables: false, //true disables Handlebar helper allowing shortcuts to current symbolInstance, symbolElement, hypeDocument, element and elementId 
+		 *     	// even more default Handlebar options can be found on the Handlebars documentation. Only listing Hype specific additions here
+		 *     });
+		 *
+		 * @param {Nodelist} elms is an optional nodelist to limit the update to a specific set of HTML elements
+		 * @param {Object} options is optional and allows for the usual Handlebar settings, defaults to useful settings for Hype if not set
+		 */
 		hypeDocument.updateHandlebarsByElement = function(elm, options){
 			if(_templates[elm.id] == null) {
 				var settings = _settings[hypeDocument.documentId()];
