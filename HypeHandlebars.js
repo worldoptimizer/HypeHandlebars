@@ -102,7 +102,7 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 		}
 
 		/**
-		 * This function is what is actually being called to make the Handlebar updates and set the option defaults before doing so. These include addition helper functions and variable shortcuts. By defaulte Hype Handlebars extends the Handlebars with the context they are compiled in, giving you access to hypeDocument and if available symbolInstance. This allows for function calls to the API of the hypeDocument or symbolInstance.
+		 * This function is what is actually being called to make the Handlebar updates and set the option defaults before doing so. These include additional helper functions and shortcuts. By default Hype Handlebars extends the regular Handlebars instance with the Hype context it is compiled in, giving you access to hypeDocument and if available the current symbolInstance. This allows for function calls to the API of the hypeDocument or symbolInstance.
 		 *
 		 *	var elm = hypeDocument.getElementById('myElement');
  		 *	hypeDocument.updateHandlebarsByElement(elm, {
