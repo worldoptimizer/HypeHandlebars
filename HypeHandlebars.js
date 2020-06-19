@@ -2,6 +2,12 @@
 Hype Handlebars 1.6
 copyright (c) 2020 Max Ziebell, (https://maxziebell.de). MIT-license
 */
+
+/**
+* A module that extends Tumult Hype with the possibility to use Handlebars in your Hype documents
+* @module Hype Handlebars
+*/
+
 /*
 * Version-History
 * 1.0	Initial release under MIT
@@ -14,11 +20,6 @@ copyright (c) 2020 Max Ziebell, (https://maxziebell.de). MIT-license
 */
 
 if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function () {
-	
-	/**
-	* A module that extends Tumult Hype with the possibility to use Handlebars in your Hype documents
-	* @module Hype Handlebars
-	*/
 
 	var _templates = {};
 	var _hbs = {};
@@ -98,10 +99,10 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 		 *
 		 *     var elm = hypeDocument.getElementById('myElement');
  		 *     hypeDocument.updateHandlebarsByElement(elm, {
-		 *     	disableHypeResolver: false, //true removes the possibility to call Hype function from within Hype Handlebar
-		 *     	disableQueryHelper: false, //true disables the Handlebar helper for scene queries like $('.myElement') and document queries like querySelector('.test')
-		 *     	disableHypeVariables: false, //true disables Handlebar helper allowing shortcuts to current symbolInstance, symbolElement, hypeDocument, element and elementId 
-		 *     	// even more default Handlebar options can be found on the Handlebars documentation. Only listing Hype specific additions here
+		 *     	disableHypeResolver: false, /* true removes the possibility to call Hype function from within Hype Handlebar */
+		 *     	disableQueryHelper: false, /* true disables the Handlebar helper for scene queries like $('.myElement') and document queries like querySelector('.test') */
+		 *     	disableHypeVariables: false, /* true disables Handlebar helper allowing shortcuts to current symbolInstance, symbolElement, hypeDocument, element and elementId */
+		 *     	/* even more default Handlebar options can be found on the Handlebars documentation. Only listing Hype specific additions here */
 		 *     });
 		 *
 		 * @param {Nodelist} elms is an optional nodelist to limit the update to a specific set of HTML elements
