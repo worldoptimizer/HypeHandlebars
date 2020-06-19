@@ -36,6 +36,13 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 			updateOnSceneLoad: false,
 		}
 
+		/**
+		 * Returns the Handlebars instance for the current Hype document. This is needed to register custom helper or do any other kind of Handlebars API call that can be found in the [Handlebars guide](https://handlebarsjs.com/guide/) and in the [Handlebars API reference](https://handlebarsjs.com/api-reference/)
+		 *
+ 		 *     hypeDocument.getHandlebars();
+		 *
+		 * @return {Object} containing the Handlebars API reference
+		 */
 		hypeDocument.getHandlebars = function(){
 			return _hbs[hypeDocument.documentId()];
 		}
@@ -105,8 +112,8 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 		 *	});
 		 *
 		 * - `disableHypeResolver: true` removes the possibility to call Hype function from within Hype Handlebar, **false** is default and allow then Hype Handlebars will try to resolve the helper name to hypeDocument. You can tweak data to contain more references by defining function references in a single depth object. This doesn't eval or allow text references meaning it is safe against direct JSON injection given you pass unfiltered data in.
-		 * - `disableQueryHelper: true` disables the Handlebar helper for scene queries like `{{$ '.myElement'}}` and document queries like `{{querySelector '.test'}}`. The most likely use case is using query helpers in another helper call like {{setElementProperty ($ '.test') 'top' 200}}, **false** is default
-		 * - `disableHypeVariables: true` disables Handlebar helper allowing shortcuts to current symbolInstance, symbolElement, hypeDocument, element and elementId, **false** is default
+		 * - `disableQueryHelper: true` disables the Handlebar helper for scene queries like `{{$ '.myElement'}}` and document queries like `{{querySelector '.test'}}`. The most likely use case is using query helpers in another helper call like `{{setElementProperty ($ '.test') 'top' 200}}`, **false** is default
+		 * - `disableHypeVariables: true` disables Handlebar helper allowing shortcuts to current @symbolInstance, @symbolElement, @hypeDocument, @element and @elementId, **false** is default
 		 * 
 		 * Even more default Handlebar options can be found on the Handlebars documentation. Only listing Hype specific additions [here](https://handlebarsjs.com/api-reference/compilation.html#handlebars-compile-template-options).
 		 *
