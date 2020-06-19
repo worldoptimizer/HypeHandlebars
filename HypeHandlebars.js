@@ -102,7 +102,7 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 		}
 
 		/**
-		 * This function is the what is actually being called to make the Handlebar updates and set the option defaults. These include addition helper functions and variable shortcuts. The Handlebars in Hype know about the context they are running in giving you access to hypeDocument and if available symbolInstance. This allows for function calls to the API of the hypeDocument or symbolInstance.
+		 * This function is what is actually being called to make the Handlebar updates and set the option defaults before doing so. These include addition helper functions and variable shortcuts. By defaulte Hype Handlebars extends the Handlebars with the context they are compiled in, giving you access to hypeDocument and if available symbolInstance. This allows for function calls to the API of the hypeDocument or symbolInstance.
 		 *
 		 *	var elm = hypeDocument.getElementById('myElement');
  		 *	hypeDocument.updateHandlebarsByElement(elm, {
@@ -111,7 +111,7 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 		 *		disableHypeVariables: true,
 		 *	});
 		 *
-		 * - `disableHypeResolver: true` removes the possibility to call Hype function from within Hype Handlebar, **false** is default and allow then Hype Handlebars will try to resolve the helper name to hypeDocument. You can tweak data to contain more references by defining function references in a single depth object. This doesn't eval or allow text references meaning it is safe against direct JSON injection given you pass unfiltered data in.
+		 * - `disableHypeResolver: true` removes the possibility to call Hype function from within Hype Handlebar, **false** is default and allow then Hype Handlebars will try to resolve the helper name to hypeDocument. You can tweak data to contain more references by defining function references in a single depth object. This doesn't eval or allow text references meaning it is safe against direct JSON injection given you pass unfiltered data in. For symbolInstance this is actually done by Hype Handlebars if disableHypeVariables isn't activated and offers calls looking like `{{@symbolInstance.startTimelineNamed 'test'}}`.
 		 * - `disableQueryHelper: true` disables the Handlebar helper for scene queries like `{{$ '.myElement'}}` and document queries like `{{querySelector '.test'}}`. The most likely use case is using query helpers in another helper call like `{{setElementProperty ($ '.test') 'top' 200}}`, **false** is default
 		 * - `disableHypeVariables: true` disables Handlebar helper allowing shortcuts to current @symbolInstance, @symbolElement, @hypeDocument, @element and @elementId, **false** is default
 		 * 
