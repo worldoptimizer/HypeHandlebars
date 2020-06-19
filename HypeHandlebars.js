@@ -104,15 +104,11 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 		 *     	disableHypeVariables: true,
 		 *     });
 		 *
-		 * - disableHypeResolver: true removes the possibility to call Hype function from within Hype Handlebar, false is default
-		 * - disableQueryHelper: true disables the Handlebar helper for scene queries like {{$ '.myElement'}} and document queries like {{querySelector '.test'}}, false is default
-		 * - disableHypeVariables: true disables Handlebar helper allowing shortcuts to current symbolInstance, symbolElement, hypeDocument, element and elementId, false is default
+		 * - `disableHypeResolver: true` removes the possibility to call Hype function from within Hype Handlebar, `false` is default
+		 * - `disableQueryHelper: true` disables the Handlebar helper for scene queries like `{{$ '.myElement'}}` and document queries like `{{querySelector '.test'}}`, `false` is default
+		 * - `disableHypeVariables: true` disables Handlebar helper allowing shortcuts to current symbolInstance, symbolElement, hypeDocument, element and elementId, false is default
 		 * 
 		 * Even more default Handlebar options can be found on the Handlebars documentation. Only listing Hype specific additions here.
-		 * ``` 
-		 * testing codeblock
-		 * ```
-		 * **bold** _italic_ *italic*
 		 *
 		 * @param {Nodelist} elms is an optional nodelist to limit the update to a specific set of HTML elements
 		 * @param {Object} options is optional and allows for the usual Handlebar settings, defaults to useful settings for Hype if not set
