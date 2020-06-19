@@ -4,20 +4,20 @@ copyright (c) 2020 Max Ziebell, (https://maxziebell.de). MIT-license
 */
 
 /**
-* A module that extends Tumult Hype with the possibility to use Handlebars in your Hype documents
-* @module Hype Handlebars
-*/
+ * A module that extends Tumult Hype with the possibility to use Handlebars in your Hype documents
+ * @module Hype Handlebars
+ */
 
-/*
-* Version-History
-* 1.0	Initial release under MIT
-* 1.1	Refactored code
-* 1.2	Added hypeDocument resolver and local helper
-* 1.3	Added more capabilities to the hypeDocument resolver
-* 1.4	Refactored Handlebars as instances and added local variables
-* 1.5	Set default selector per instance and update per selector
-* 1.6	Set default data source or route data source by function
-*/
+/**
+ * Version-History
+ * 1.0	Initial release under MIT
+ * 1.1	Refactored code
+ * 1.2	Added hypeDocument resolver and local helper
+ * 1.3	Added more capabilities to the hypeDocument resolver
+ * 1.4	Refactored Handlebars as instances and added local variables
+ * 1.5	Set default selector per instance and update per selector
+ * 1.6	Set default data source or route data source by function
+ */
 
 if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function () {
 
@@ -97,12 +97,12 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 		/**
 		 * This function is the what is actually being called to make the Handlebar updates and set the option defaults. These include addition helper functions and variable shortcuts. The Handlebars in Hype know about the context they are running in giving you access to hypeDocument and if available symbolInstance. This allow for function calls to the API of the hypeDocument or symbolInstance.
 		 *
-		 *     var elm = hypeDocument.getElementById('myElement');
- 		 *     hypeDocument.updateHandlebarsByElement(elm, {
-		 *     	disableHypeResolver: true,
-		 *     	disableQueryHelper: true,
-		 *     	disableHypeVariables: true,
-		 *     });
+		 *		var elm = hypeDocument.getElementById('myElement');
+ 		 *		hypeDocument.updateHandlebarsByElement(elm, {
+		 *			disableHypeResolver: true,
+		 *			disableQueryHelper: true,
+		 *			disableHypeVariables: true,
+		 *		});
 		 *
 		 * - `disableHypeResolver: true` removes the possibility to call Hype function from within Hype Handlebar, **false** is default
 		 * - `disableQueryHelper: true` disables the Handlebar helper for scene queries like `{{$ '.myElement'}}` and document queries like `{{querySelector '.test'}}`, **false** is default
