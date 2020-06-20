@@ -17,6 +17,12 @@
 `1.5	Set default selector per instance and update per selector`  
 `1.6	Set default data source or route data source by function`  
 
+Documentation
+--
+There is a JSDoc based documentation of the functions at
+https://doxdox.org/worldoptimizer/HypeHandlebars#HypeHandlebars.js
+
+
 Content Delivery Network (CDN)
 --
 Latest version can be linked into your project using the following in the head section of your project:
