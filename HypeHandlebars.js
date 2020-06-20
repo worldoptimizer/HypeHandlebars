@@ -77,8 +77,8 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 		 *
  		 *     hypeDocument.updateHandlebars();
 		 *
-		 * @param {Object} options is optional and allows for the usual Handlebar settings, defaults to useful settings for Hype if not set
-		 * @param {Nodelist} elms is an optional nodelist to limit the update to a specific set of HTML elements
+		 * @param {Object} options The optional object containing regular and Hype specific Handlebars options, defaults to useful Hype specific options if not set
+		 * @param {Nodelist} elms This is an optional nodelist to limit the update to a specific set of HTML elements
 		 */
 		hypeDocument.updateHandlebars = function(options, elms){
 			var sceneElm = document.getElementById(hypeDocument.currentSceneId());
@@ -94,8 +94,8 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 		 *     var elms = document.querySelector('.myHandleBars');
  		 *     hypeDocument.updateHandlebarsByNodelist(elms);
 		 *
-		 * @param {Nodelist} elms is an optional nodelist to limit the update to a specific set of HTML elements
-		 * @param {Object} options is optional and allows for the usual Handlebar settings, defaults to useful settings for Hype if not set
+		 * @param {Nodelist} elms This is an optional nodelist to limit the update to a specific set of HTML elements
+		 * @param {Object} options The optional object containing regular and Hype specific Handlebars options, defaults to useful Hype specific options if not set
 		 */
 		hypeDocument.updateHandlebarsByNodelist = function(elms, options){
 			hypeDocument.updateHandlebars(options, elms);
@@ -117,8 +117,8 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 		 * 
 		 * Even more default Handlebar options can be found on the Handlebars documentation. Only listing Hype specific additions [here](https://handlebarsjs.com/api-reference/compilation.html#handlebars-compile-template-options).
 		 *
-		 * @param {Nodelist} elms is an optional nodelist to limit the update to a specific set of HTML elements
-		 * @param {Object} options is optional and allows for the usual Handlebar settings, defaults to useful settings for Hype if not set
+		 * @param {Nodelist} elms This is an optional nodelist to limit the update to a specific set of HTML elements
+		 * @param {Object} options The optional object containing regular and Hype specific Handlebars options, defaults to useful Hype specific options if not set
 		 */
 		hypeDocument.updateHandlebarsByElement = function(elm, options){
 			if(_templates[elm.id] == null) {
@@ -167,9 +167,9 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 		 *
  		 *	hypeDocument.setHandlebarsTemplateById ('myElement', 'I am {{name}}, nice to meet you!')
 		 *
-		 * @param {String} id of the element you want to replace the template for
-		 * @param {String} tmpl is the new Handlebars string to precombile and update
-		 * @param {Object} options is optional and allows for the usual Handlebar settings, defaults to useful settings for Hype if not set
+		 * @param {String} id The ID of the element you want to replace the template for
+		 * @param {String} tmpl The new template tstring Handlebars will use to precombile and update
+		 * @param {Object} options The optional object containing regular and Hype specific Handlebars options, defaults to useful Hype specific options if not set
 		 */
 		hypeDocument.setHandlebarsTemplateById = function(id, tmpl,options){
 			if (_templates[id]) delete _templates[id];
@@ -187,8 +187,8 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 		 * - `selector` is the query selector string that determins if a rectangle in Hype is a Handlebars template. It defaults to '[data-handlebars]'
 		 * - `dataSource` set the default object Hype Handlebars uses to populate a Handlebars template with. It defaults to `hypeDocument.customData`
 		 *
-		 * @param {String} key is the name of the setting you want to change or set
-		 * @param {String} val is the value of the setting
+		 * @param {String} key This is the name of the setting you want to change or initialize
+		 * @param {String} val This is the value of the setting
 		 */
 		hypeDocument.setHandlebarsDefaultByKey = function(key, val){
 			if (key) _settings[hypeDocument.documentId()][key] = val;
@@ -199,7 +199,7 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 			/**
 			 * This helper does a backwards treewalk to window from the element it is started on and returns the symbolInstance if one is found. This is the orginal function originally writen by Stephen Decker at Tumult. When you use Hype Handlebars in conjunction with Hype Symbol Cache this function won't be defined by Haype Handlebars but still work but will be provided by Hype Symbol Cache including the extended symbol functionality to Hype Handbars as well.
 			 *
-			 * @param {HTMLElement} element to start the treewalk on
+			 * @param {HTMLElement} element The element to start the treewalk on
 			 * @return {Object} symbolInstance of the first symbol while walking the tree backwards or null if no symbolInstance is found
 			 */
 			hypeDocument.getSymbolInstanceForElement = function(element){

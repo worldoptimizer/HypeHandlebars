@@ -19,9 +19,7 @@
 
 Documentation
 --
-There is a JSDoc based documentation of the functions at
-
-https://doxdox.org/worldoptimizer/HypeHandlebars
+There is a [JSDoc](https://en.wikipedia.org/wiki/JSDoc) based documentation of the functions at https://doxdox.org/worldoptimizer/HypeHandlebars
 
 
 Content Delivery Network (CDN)
