@@ -162,6 +162,15 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 			_templates[elm.id].update(options);
 		}
 
+		/**
+		 * This function allows you to reset the Handlebars template for a particular element. Internally the Handlebars template you provide initially is taken from the Hype rectangle you placed it in. Then it is precompiled by Handlebars into a function and cached by Hype Handlebars. Any subsequent update runs much faster as it only executes the precombiled function. To replace the initial template this function allows you to reset the precombilation cache and define a new template. In the current implementation it also updates the corresponding elm automaticly. This might be changed in the future or at least put into a switch.
+		 *
+ 		 *	hypeDocument.setHandlebarsTemplateById ('myElement', 'I am {{name}}, nice to meet you!')
+		 *
+		 * @param {String} id of the element you want to replace the template for
+		 * @param {String} tmpl is the new Handlebars string to precombile and update
+		 * @param {Object} options is optional and allows for the usual Handlebar settings, defaults to useful settings for Hype if not set
+		 */
 		hypeDocument.setHandlebarsTemplateById = function(id, tmpl,options){
 			if (_templates[id]) delete _templates[id];
 			var elm = document.getElementById(id);
@@ -171,12 +180,28 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 			}
 		}
 
+		/**
+		 * This helper allows you to set some useful default values to avoid having to 
+		 *
+ 		 * - `updateOnSceneLoad` can be either a `true`or a `function`. When set to it runs either a plain `hypeDocument.updateHandlebars();` or the function you set to update Handlebars on scene load (HypeSceneLoad event)
+		 * - `selector` is the query selector string that determins if a rectangle in Hype is a Handlebars template. It defaults to '[data-handlebars]'
+		 * - `dataSource` set the default object Hype Handlebars uses to populate a Handlebars template with. It defaults to `hypeDocument.customData`
+		 *
+		 * @param {String} key is the name of the setting you want to change or set
+		 * @param {String} val is the value of the setting
+		 */
 		hypeDocument.setHandlebarsDefaultByKey = function(key, val){
 			if (key) _settings[hypeDocument.documentId()][key] = val;
 		}	
 
 		//Hype Symbol Cache compatiblitity
 		if (!hypeDocument.getSymbolInstanceForElement) { 
+			/**
+			 * This helper does a backwards treewalk to window from the element it is started on and returns the symbolInstance if one is found. This is the orginal function originally writen by Stephen Decker at Tumult. When you use Hype Handlebars in conjunction with Hype Symbol Cache this function won't be defined by Haype Handlebars but still work but will be provided by Hype Symbol Cache including the extended symbol functionality to Hype Handbars as well.
+			 *
+			 * @param {HTMLElement} element to start the treewalk on
+			 * @param {Object} symbolInstance of the first symbol while walking the tree backwards or null if no symbolInstance is found
+			 */
 			hypeDocument.getSymbolInstanceForElement = function(element){
 				var symbolInstance = null;
 				var parentSymbolElement = element.parentNode;
