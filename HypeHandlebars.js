@@ -197,7 +197,7 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 		//Hype Symbol Cache compatiblitity
 		if (!hypeDocument.getSymbolInstanceForElement) { 
 			/**
-			 * This helper does a backwards treewalk from the element it is started on and returns the symbolInstance if one is found. This function was originally written by Stephen Decker from Tumult Inc. When you use Hype Handlebars in conjunction with Hype Symbol Cache this function won't be defined by Hype Handlebars, but still work as it will be provided by Hype Symbol Cache offering the extended symbol functionality to Hype Handlebars as well.
+			 * This helper does a backwards treewalk from the element it is started on and returns the symbolInstance if one is found. This function was originally written by Stephen Decker from Tumult Inc. When you use Hype Handlebars in conjunction with [Hype Symbol Cache](https://github.com/worldoptimizer/HypeSymbolCache) this function won't be defined by Hype Handlebars, but still work as it will be provided by Hype Symbol Cache offering the extended symbol functionality to Hype Handlebars as well.
 			 *
 			 * @param {HTMLElement} element The element to start the treewalk on
 			 * @return {Object} Returns the first found symbolInstance while tree walking or null if no symbolInstance is found
