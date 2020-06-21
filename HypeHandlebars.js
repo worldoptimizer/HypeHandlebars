@@ -5,7 +5,7 @@ copyright (c) 2020 Max Ziebell, (https://maxziebell.de). MIT-license
 
 /**
  * A module that extends Tumult Hype with the possibility to use Handlebars in your Hype documents
- * @module Hype Handlebars
+ * @module HypeHandlebars
  */
 
 /*
@@ -230,8 +230,18 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 	window.HYPE_eventListeners.push({"type":"HypeDocumentLoad", "callback":extendHype});
 	window.HYPE_eventListeners.push({"type":"HypeSceneLoad", "callback":sceneLoad});
 
-	/* Reveal Public interface to window['HypeHandlebars'] */
-	return {
+	
+	 /**
+	 * @typedef {Object} HypeHandlebars
+	 * @property {String} version Version of the extension
+	 */
+	var HypeHandlebars = {
 		version: '1.6',
 	};
+
+	/** 
+	 * Reveal Public interface to window['HypeHandlebars'] 
+	 * return {HypeHandlebars}
+	 */
+	return HypeHandlebars;
 })();	
