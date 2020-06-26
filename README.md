@@ -16,6 +16,7 @@
 `1.4	Refactored Handlebars as instances and added local variables`  
 `1.5	Set default selector per instance and update per selector`  
 `1.6	Set default data source or route data source by function`  
+`1.7	Set default rendering on scene and prepare to true and added event variables`  
 
 Documentation
 --
