@@ -1,5 +1,5 @@
 /*!
-Hype Handlebars 1.6
+Hype Handlebars 1.7
 copyright (c) 2020 Max Ziebell, (https://maxziebell.de). MIT-license
 */
 
@@ -17,6 +17,7 @@ copyright (c) 2020 Max Ziebell, (https://maxziebell.de). MIT-license
  * 1.4	Refactored Handlebars as instances and added local variables
  * 1.5	Set default selector per instance and update per selector
  * 1.6	Set default data source or route data source by function
+ * 1.7	Set default rendering on scene and prepare to true and added event variables
  */
 
 if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function () {
@@ -32,8 +33,10 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 
 		_settings[hypeDocument.documentId()] = {
 			selector: '[data-handlebars]',
+			updateOnHypeScenePrepareForDisplay: true,
+			updateOnHypeSceneLoad: true,
 			dataSource: null,
-			updateOnSceneLoad: false,
+			
 		}
 
 		/**
@@ -214,29 +217,32 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 		}
 	}
 
-	function sceneLoad(hypeDocument, element, event) {
-		var update = _settings[hypeDocument.documentId()].updateOnSceneLoad;
+	function scenePrepareForDisplay(hypeDocument, element, event) {
+		var update = _settings[hypeDocument.documentId()]['updateOn'+event.type];
 		if (update) {
 			if (typeof update === "function") {
 				update();
 			} else {
-				hypeDocument.updateHandlebars();
+				var options = {data:{event:{}}};
+				options.data.event[event.type] = true;
+				hypeDocument.updateHandlebars(options);
 			}
 		}
 	}
 	
 	/* Setup Hype listeners */
 	if("HYPE_eventListeners" in window === false) { window.HYPE_eventListeners = Array();}
-	window.HYPE_eventListeners.push({"type":"HypeDocumentLoad", "callback":extendHype});
-	window.HYPE_eventListeners.push({"type":"HypeSceneLoad", "callback":sceneLoad});
-
+	/* use unshift to ensure first order loading */
+	window.HYPE_eventListeners.unshift({"type":"HypeDocumentLoad", "callback":extendHype}); 
+	window.HYPE_eventListeners.push({"type":"HypeScenePrepareForDisplay", "callback":scenePrepareForDisplay});
+	window.HYPE_eventListeners.push({"type":"HypeSceneLoad", "callback":scenePrepareForDisplay});
 	
 	 /**
 	 * @typedef {Object} HypeHandlebars
 	 * @property {String} version Version of the extension
 	 */
 	var HypeHandlebars = {
-		version: '1.6',
+		version: '1.7',
 	};
 
 	/** 
