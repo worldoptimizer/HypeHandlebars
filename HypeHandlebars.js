@@ -186,7 +186,8 @@ if("HypeHandlebars" in window === false) window['HypeHandlebars'] = (function ()
 		/**
 		 * This helper allows you to set some useful default values to avoid having to 
 		 *
- 		 * - `updateOnSceneLoad` can be either a `true`or a `function`. When set to it runs either a plain `hypeDocument.updateHandlebars();` or the function you set to update Handlebars on scene load (HypeSceneLoad event)
+ 		 * - `updateOnHypeSceneLoad` can be either a `true`or a `function`. When set to it runs either a plain `hypeDocument.updateHandlebars();` or the function you set to update Handlebars on scene load (HypeSceneLoad event), defaults to true
+		 * - `updateOnHypeScenePrepareForDisplay` can be either a `true`or a `function`. When set to it runs either a plain `hypeDocument.updateHandlebars();` or the function you set to update Handlebars on scene load (HypeSceneLoad event), defaults to true
 		 * - `selector` is the query selector string that determins if a rectangle in Hype is a Handlebars template. It defaults to '[data-handlebars]'
 		 * - `dataSource` set the default object Hype Handlebars uses to populate a Handlebars template with. It defaults to `hypeDocument.customData`
 		 *
